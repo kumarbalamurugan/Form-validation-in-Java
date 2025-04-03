@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        label h3 {
+            font-size: 18px;
+            color: #495057;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Create New Details</h2>
+        <form th:action="@{/submit}" th:object="${form}" method="post">
+            <table>
+                <tr>
+                    <td><input type="hidden" th:field="*{formid}"></td>
+                </tr>
+                <tr>
+                    <td><label><h3>UserName:</h3></label></td>
+                    <td><input type="text" th:field="*{username}" placeholder="Enter Username" required></td>
+                </tr>
+                <tr>
+                    <td><label><h3>Password:</h3></label></td>
+                    <td><input type="password" th:field="*{password}" placeholder="Enter password" required></td>
+                </tr>
+                <tr>
+                    <td><label><h3>Mobile Number:</h3></label></td>
+                    <td><input type="number" th:field="*{phone}" placeholder="Enter Mobile Number" required></td>
+                </tr>
+                <tr>
+                    <td><label><h3>Email:</h3></label></td>
+                    <td><input type="email" th:field="*{email}" placeholder="Enter Email-Id" required></td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2">
+                        <button type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

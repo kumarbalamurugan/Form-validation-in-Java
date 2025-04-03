@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #343a40;
+        }
+
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 24px;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table th {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+        }
+
+        .table td, .table th {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .table a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .table a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center" class="container">
+        <h1>Form Management System</h1>
+        <div>
+            <h3>
+                <a th:href="@{/form}" class="btn-custom">Add Details</a>
+            </h3>
+        </div>
+        
+        <div class="col-sm-8" align="center">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>User Id</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="form:${listformss}">
+                        <td th:text="${form.formid}">User ID</td>
+                        <td th:text="${form.username}">UserName</td>
+                        <td th:text="${form.password}">Password</td>
+                        <td th:text="${form.phone}">Phone Number</td>
+                        <td th:text="${form.email}">Email</td>
+                        <td><a th:href="@{'/edit/'+${form.formid}}">Update</a></td>
+                        <td><a th:href="@{'/delete/'+${form.formid}}" style="color: red;">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
